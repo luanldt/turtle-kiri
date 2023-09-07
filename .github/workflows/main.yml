@@ -14,7 +14,9 @@ jobs:
         uses: actions/checkout@v2
       - name: Run script
         run: |
-          ./scripts/execute.sh ${{ secrets.IMAGE_SOURCE_URL }} ${{ env.FILE_JSON }}
+          sed -i -e 's/\r$//' ./scripts/execute.sh;
+          chmod +x ./scripts/execute.sh;
+          ./scripts/execute.sh ${{ secrets.IMAGE_SOURCE_URL }} ${{ env.FILE_JSON }};
         shell: bash
       - name: Commit
         run: |
