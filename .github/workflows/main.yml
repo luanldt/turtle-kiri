@@ -16,7 +16,7 @@ jobs:
         run: |
           sed -i -e 's/\r$//' ./scripts/execute.sh;
           chmod +x ./scripts/execute.sh;
-          ./scripts/execute.sh ${{ secrets.IMAGE_SOURCE_URL }} ${{ env.FILE_JSON }};
+          ./scripts/execute.sh ${{ secrets.IMAGE_SOURCE_URL }} ${{ vars.FILE_JSON }};
         shell: bash
       - name: Commit
         run: |
