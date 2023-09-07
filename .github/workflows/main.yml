@@ -11,13 +11,14 @@ jobs:
       - name: Install jq
         uses: dcarbone/install-jq-action@v1.0.1
       - name: Checkout
-        uses: actions/checkout@v1
+        uses: actions/checkout@v2
       - name: Run script
         run: |
           ls -la
           sed -i -e 's/\r$//' ./scripts/execute.sh
           chmod +x ./scripts/execute.sh
           ./scripts/execute.sh ${{ secrets.IMAGE_SOURCE_URL }} ${{ env.FILE_JSON }}
+        shell: bash
       - name: Commit
         run: |
           git config --global user.name 'Automated Turtle 404'
