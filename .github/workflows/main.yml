@@ -20,6 +20,7 @@ jobs:
           git push
           
   automate_image:
+    needs: [automate_report]
     name: Download image and save into disk
     runs-on: ubuntu-latest
     steps:
