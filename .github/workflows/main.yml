@@ -16,12 +16,12 @@ jobs:
         run: |
           sed -i -e 's/\r$//' ./scripts/execute.sh;
           chmod +x ./scripts/execute.sh;
-          ./scripts/execute.sh ${{ secrets.IMAGE_SOURCE_URL }} ${{ vars.FILE_JSON }};
+          ./scripts/execute.sh ${{ secrets.IMAGE_SOURCE_URL }} ${{ vars.JSON_FILE }};
         shell: bash
       - name: Commit
         run: |
           git config --global user.name 'Automated Turtle 404'
           git config --global user.email 'turtle.kiri@users.noreply.github.com'
-          git add .
+          git add ${{ vars.JSON_FILE }}
           git commit -am "Automated submit"
           git push
